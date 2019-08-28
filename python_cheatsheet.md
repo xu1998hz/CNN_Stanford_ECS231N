@@ -200,11 +200,41 @@ Numpy broadcast allows us perform this computation without actually creating mul
 > \# If we transpose x then it has shape (3,2) and can be broadcast <br/>
 > print((x.T + w).T) <br/>
 > \# reshape w to be column vector of shape (2, 1) <br/>
-> print(x + np.reshape(w, (2, 1))) <br/>
+> print(x + np.reshape(w, (2, 1))) <br/> <br/>
 
+#### SCIPY
+scipy builds on numpy and provides a large number of functions that operate on numpy arrays and are useful for different types of scientific and engineering applications.
 
+##### Image operations
+SciPy provides some basic functions to work with images. It has functions to read images from disk into numpy arrays, to write numpy arrays to disk as images, and to resize images.
 
+> from scipy.misc import imread, imsave, imresize <br/>
+> img = imread('image.jpg') <br/>
+> \# we can tint the image by scaling each of the color channels <br/>
+> \# array [1, 0.95, 0.9] has shape (3,) <br/>
+> \# numpy broadcasting means that this leaves the red channel unchanged, <br/>
+> \# and multiplies the green and blue channels by 0.95 and 0.9 respectively <br/>
+> img_tinted = img * [1, 0.95, 0.9] <br/>
+> \# Resize the tinted image to be 300 by 300 pixels.
+> img_tinted = imresize(img_tinted, (300, 300))
+> imsave('assets/cat_tinted.jpg', img_tinted)
 
+##### MATLAB files
+The functions scipy.io.loadmat and scipy.io.savemat allow you to read and write MATLAB files.
 
+##### Distance between points
+SciPy defines some useful functions for computing distances between sets of points. <br/>
+The function scipy.spatial.distance.pdist computes the distance between all pairs of points in a given set: <br/>
+> import numpy as np <br/>
+> from scipy.spatial.distance import pdist, squareform <br/>
+> x = np.array([[0, 1], [1, 0], [2, 0]])
+> x = np.array([[0, 1], [1, 0], [2, 0]])
 
+A similar function (scipy.spatial.distance.cdist) computes the distance between all pairs across two sets of point
+
+#### Matplotlib
+Matplotlib is a plotting library. In this section give a brief introduction to the matplotlib.pyplot module, which provides a plotting system similar to that of MATLAB.
+
+plot allows you to plot 2D data
+subplot
 
